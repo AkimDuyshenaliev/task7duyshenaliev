@@ -1,12 +1,12 @@
-## Сборка докер-образа
-``` docker build -t fastapi_skachkov . ```
-## Запуск докер-образа
-```docker run --name app -p 8000:8000 fastapi_skachkov```
+### Build docker image
+``` docker build -t fastapi_duyshenaliev . ```
+### Launch docker image
+```docker run --name app -p 8000:8000 fastapi_duyshenaliev```
 
-## Локальный запуск проекта
+### Launch local project
 ```uvicorn main:app --reload```
 
-## Скачивание докер-образа
-```docker pull skrachin/task5-skachkov:fastapi_skachkov```
-## Запуск докер-образа
-```docker run --name app -p 8000:8000 skrachin/task5-skachkov:fastapi_skachkov```
+### Download docker image
+```docker pull akimduyshenaliev/task5duyshenaliev:latest```
+### Launch docker image
+```docker run --name app -p 8000:8000 akimduyshenaliev/task5duyshenaliev:latest```
