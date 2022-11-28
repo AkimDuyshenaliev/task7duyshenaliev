@@ -8,5 +8,5 @@
 
 ### Download docker image
 ```docker pull akimduyshenaliev/task5duyshenaliev:latest```
-### Launch docker image
-```docker run --name app -p 8000:8000 akimduyshenaliev/task5duyshenaliev:latest```
+### Launch docker-compose
+```docker compose up -d```
