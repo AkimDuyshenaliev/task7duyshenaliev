@@ -1,23 +1,28 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends, Request
 from fastapi.responses import HTMLResponse
+from db import get_db
+from sqlalchemy.orm import Session
+
+from models import TableCounter
 import uvicorn
 
 
-counter = 0
 name = "Akim Duyshenaliev"
 app = FastAPI()
 
 
 @app.get("/")
-async def root():
-    return { "counter": counter }
+async def root(db: Session = Depends(get_db)): 
+    return { "counter": db.query(TableCounter.id).order_by(TableCounter.id.desc()).first() }
 
 
 @app.get("/stat")
-async def stat():
-    global counter
-    counter += 1 
-    return { "counter": counter - 1 }
+async def stat(request: Request, db: Session = Depends(get_db)):
+    counter = TableCounter(client_info=request.headers["user-agent"])
+    db.add(counter)
+    db.commit()
+    db.refresh(counter)
+    return { "counter": db.query(TableCounter.id).order_by(TableCounter.id.desc()).first() }
 
 
 @app.get("/about")

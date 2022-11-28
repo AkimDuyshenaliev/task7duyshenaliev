@@ -12,5 +12,3 @@ RUN set -ex && pipenv install --deploy --system
 COPY . /code/
 
 EXPOSE 8000
-
-CMD [ "python", "main.py"]
